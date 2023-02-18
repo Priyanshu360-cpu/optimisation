@@ -1,5 +1,6 @@
 import random
 populations=[]
+#generating random binary numbers
 for x in range(4):
     s=[]
     for y in range(6):
@@ -61,20 +62,49 @@ def swap():
         swap_mutation.append(swap_handler)
 swap()
 print(swap_mutation)
+inversion_mutation=[]
+def inversion():
+    global inversion_mutation
+    for i in range(0,len(populations2)):
+        inversion_handler=[]
+        pop=populations2[i]
+        for(x,y) in zip(pop[0:3],pop[3:6]):
+            inversion_handler.append(x)
+            inversion_handler.append(y)
+        inversion_mutation.append(inversion_handler)
+inversion()
+print(inversion_mutation)
+best=[0,0,0,0,0,0]
 print('Comparison')
 print('Population 1')
 print(populations)
 for x in populations:
+    if(bits_to_int(best)<bits_to_int(x)):
+        best=x
     print(bits_to_int(x))
 print('After crossover')
 print(populations2)
 for x in populations2:
+    if(bits_to_int(best)<bits_to_int(x)):
+        best=x
     print(bits_to_int(x))
 print('After bit flip mutation')
 print(bit_flip_mutation)
 for x in bit_flip_mutation:
+    if(bits_to_int(best)<bits_to_int(x)):
+        best=x
     print(bits_to_int(x))
 print('After swap mutation')
 print(swap_mutation)
 for x in swap_mutation:
+    if(bits_to_int(best)<bits_to_int(x)):
+        best=x
     print(bits_to_int(x))
+print('After inversion mutation')
+print(inversion_mutation)
+for x in inversion_mutation:
+    if(bits_to_int(best)<bits_to_int(x)):
+        best=x
+    print(bits_to_int(x))
+print('Best solution')
+print("Chromosome "+str(best)+'\n'+"Numeric - "+str(bits_to_int(best)))
