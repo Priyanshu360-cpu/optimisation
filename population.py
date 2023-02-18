@@ -68,6 +68,7 @@ def inversion():
     for i in range(0,len(populations2)):
         inversion_handler=[]
         pop=populations2[i]
+        # handling inversions in zips
         for(x,y) in zip(pop[0:3],pop[3:6]):
             inversion_handler.append(x)
             inversion_handler.append(y)
@@ -106,5 +107,5 @@ for x in inversion_mutation:
     if(bits_to_int(best)<bits_to_int(x)):
         best=x
     print(bits_to_int(x))
-print('Best solution')
-print("Chromosome "+str(best)+'\n'+"Numeric - "+str(bits_to_int(best)))
+print('Best solution in the population is:')
+print("Chromosome - "+str(best)+'\n'+"Numeric - "+str(bits_to_int(best)))
